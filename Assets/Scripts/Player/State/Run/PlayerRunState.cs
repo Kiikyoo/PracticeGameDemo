@@ -28,11 +28,22 @@ public class PlayerRunState : PlayerStateBase
     {
         base.Update();
 
+        #region 检测大招
+        if (playerController.inputSystem.Player.BigSkill.triggered)
+        {
+            //进入大招状态
+            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            return;
+        }
+        #endregion
+
+
         #region 检测攻击
         if (playerController.inputSystem.Player.Fire.triggered)
         {
             //切换至普通攻击状态
-            playerController.SwitchState(PlayerState.NormalAttack);
+            playerController.SwitchState(E_PlayerState.NormalAttack);
+            return;
         }
         #endregion
 
@@ -40,14 +51,16 @@ public class PlayerRunState : PlayerStateBase
         if (playerController.inputSystem.Player.Evade.IsPressed())
         {
             //切换至闪避状态
-            playerController.SwitchState(PlayerState.Evade_Front);
+            playerController.SwitchState(E_PlayerState.Evade_Front);
+            return;
         }
         #endregion
 
         #region 检测待机
         if (playerController.inputMoveVec2 == Vector2.zero)
         {
-            playerController.SwitchState(PlayerState.RunEnd);
+            playerController.SwitchState(E_PlayerState.RunEnd);
+            return;
         }
         #endregion
 
@@ -63,10 +76,11 @@ public class PlayerRunState : PlayerStateBase
             Quaternion targetQua = Quaternion.LookRotation(targetDic);
             //计算旋转角度，若在区间内切换至转身状态，否则慢转人物模型
             float angles = Mathf.Abs(targetQua.eulerAngles.y - playerModel.transform.rotation.eulerAngles.y);
-            if(angles > 145f && angles < 215f && playerModel.State == PlayerState.Run)
+            if(angles > 145f && angles < 215f && playerModel.State == E_PlayerState.Run)
             {
                 //切换至转身状态
-                playerController.SwitchState(PlayerState.TurnBack);
+                playerController.SwitchState(E_PlayerState.TurnBack);
+                return;
             }
             else
             {

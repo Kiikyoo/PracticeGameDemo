@@ -11,12 +11,12 @@ public class PlayerEvadeState : PlayerStateBase
         #region 判断前后闪避
         switch (playerModel.State)
         {
-            case PlayerState.Run:
+            case E_PlayerState.Run:
                 playerController.PlayAnimation("Evade_Front");
                 break;
-            case PlayerState.Idle:
-            case PlayerState.RunEnd:
-            case PlayerState.NormalAttackEnd:
+            case E_PlayerState.Idle:
+            case E_PlayerState.RunEnd:
+            case E_PlayerState.NormalAttackEnd:
                 playerController.PlayAnimation("Evade_Back");
                 break;
         }
@@ -28,7 +28,8 @@ public class PlayerEvadeState : PlayerStateBase
         #region 动画是否播放结束,是则转为闪避结束状态
         if (IsAnimationEnd())
         {
-            playerController.SwitchState(PlayerState.EvadeEnd);
+            playerController.SwitchState(E_PlayerState.EvadeEnd);
+            return;
         }
         #endregion
     }

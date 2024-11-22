@@ -26,7 +26,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
                 //重新计算攻击段数
                 playerModel.skillConfig.currentNormalAttackIndex = 1;
             }
-            playerController.SwitchState(PlayerState.NormalAttack);
+            playerController.SwitchState(E_PlayerState.NormalAttack);
             return;
         }
         #endregion
@@ -34,7 +34,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
         #region 检测移动
         if (playerController.inputMoveVec2 != Vector2.zero && animationPlayTime >= 0.4f)
         {
-            playerController.SwitchState(PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Run);
             //重新计算攻击段数
             playerModel.skillConfig.currentNormalAttackIndex = 1;
         }
@@ -44,7 +44,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
         if (playerController.inputSystem.Player.Evade.triggered)
         {
             //切换至闪避状态
-            playerController.SwitchState(PlayerState.Evade_Front);
+            playerController.SwitchState(E_PlayerState.Evade_Front);
             //重新计算攻击段数
             playerModel.skillConfig.currentNormalAttackIndex = 1;
         }
@@ -54,7 +54,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
         if (IsAnimationEnd())
         {
             //切换至普通攻击后摇状态
-            playerController.SwitchState(PlayerState.Idle);
+            playerController.SwitchState(E_PlayerState.Idle);
             playerModel.skillConfig.currentNormalAttackIndex = 1;
         }
         #endregion

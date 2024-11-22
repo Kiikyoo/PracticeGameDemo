@@ -15,10 +15,20 @@ public class PlayerIdleState : PlayerStateBase
     {
         base.Update();
 
-        #region ºÏ≤‚±º≈‹
-        if(playerController.inputMoveVec2 != Vector2.zero)
+        #region ºÏ≤‚¥Û’–
+        if (playerController.inputSystem.Player.BigSkill.triggered)
         {
-            playerController.SwitchState(PlayerState.Run);
+            //Ω¯»Î¥Û’–◊¥Ã¨
+            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            return;
+        }
+        #endregion
+
+        #region ºÏ≤‚±º≈‹
+        if (playerController.inputMoveVec2 != Vector2.zero)
+        {
+            playerController.SwitchState(E_PlayerState.Run);
+            return;
         }
         #endregion
 
@@ -26,7 +36,8 @@ public class PlayerIdleState : PlayerStateBase
         if (playerController.inputSystem.Player.Evade.triggered)
         {
             //«–ªª÷¡…¡±‹◊¥Ã¨
-            playerController.SwitchState(PlayerState.Evade_Back);
+            playerController.SwitchState(E_PlayerState.Evade_Back);
+            return;
         }
         #endregion
 
@@ -34,7 +45,8 @@ public class PlayerIdleState : PlayerStateBase
         if (playerController.inputSystem.Player.Fire.triggered)
         {
             //«–ªª÷¡∆’Õ®π•ª˜◊¥Ã¨
-            playerController.SwitchState(PlayerState.NormalAttack);
+            playerController.SwitchState(E_PlayerState.NormalAttack);
+            return;
         }
         #endregion
     }

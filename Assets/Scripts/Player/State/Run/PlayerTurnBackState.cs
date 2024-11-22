@@ -23,7 +23,7 @@ public class PlayerTurnBackState : PlayerStateBase
         #region ¼ì²â¶¯»­ÊÇ·ñ½áÊø
         if(stateInfo.normalizedTime >= 1.0f && !playerModel.animator.IsInTransition(0))
         {
-            playerController.SwitchState(PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Run);
         }
 
         #endregion

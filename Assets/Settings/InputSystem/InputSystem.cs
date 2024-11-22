@@ -62,6 +62,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BigSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""7982cf31-3769-4993-a412-2debf0155d95"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -293,6 +302,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Evade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f6a8432-fd0a-4d96-80df-a72e6de086ca"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""BigSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -884,6 +904,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Evade = m_Player.FindAction("Evade", throwIfNotFound: true);
+        m_Player_BigSkill = m_Player.FindAction("BigSkill", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -961,6 +982,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Evade;
+    private readonly InputAction m_Player_BigSkill;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -969,6 +991,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Evade => m_Wrapper.m_Player_Evade;
+        public InputAction @BigSkill => m_Wrapper.m_Player_BigSkill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -990,6 +1013,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Evade.started += instance.OnEvade;
             @Evade.performed += instance.OnEvade;
             @Evade.canceled += instance.OnEvade;
+            @BigSkill.started += instance.OnBigSkill;
+            @BigSkill.performed += instance.OnBigSkill;
+            @BigSkill.canceled += instance.OnBigSkill;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1006,6 +1032,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Evade.started -= instance.OnEvade;
             @Evade.performed -= instance.OnEvade;
             @Evade.canceled -= instance.OnEvade;
+            @BigSkill.started -= instance.OnBigSkill;
+            @BigSkill.performed -= instance.OnBigSkill;
+            @BigSkill.canceled -= instance.OnBigSkill;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1192,6 +1221,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnEvade(InputAction.CallbackContext context);
+        void OnBigSkill(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

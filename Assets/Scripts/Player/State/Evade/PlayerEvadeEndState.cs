@@ -14,10 +14,10 @@ public class PlayerEvadeEndState : PlayerStateBase
         #region 判断前后闪避
         switch(playerModel.State)
         {
-            case PlayerState.Evade_Front:
+            case E_PlayerState.Evade_Front:
                 playerController.PlayAnimation("Evade_Front_End");
                 break;            
-            case PlayerState.Evade_Back:
+            case E_PlayerState.Evade_Back:
                 playerController.PlayAnimation("Evade_Back_End");
                 break;
         }
@@ -31,14 +31,16 @@ public class PlayerEvadeEndState : PlayerStateBase
         #region 检测移动输入
         if (playerController.inputMoveVec2 != Vector2.zero)
         {
-            playerController.SwitchState(PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Run);
+            return;
         }
         #endregion
 
         #region 动画是否播放结束,是则转为待机状态
         if (IsAnimationEnd())
         {
-            playerController.SwitchState(PlayerState.Idle);
+            playerController.SwitchState(E_PlayerState.Idle);
+            return;
         }
         #endregion
 
@@ -46,7 +48,17 @@ public class PlayerEvadeEndState : PlayerStateBase
         if (playerController.inputSystem.Player.Fire.triggered)
         {
             //切换至普通攻击状态
-            playerController.SwitchState(PlayerState.NormalAttack);
+            playerController.SwitchState(E_PlayerState.NormalAttack);
+            return;
+        }
+        #endregion
+
+        #region 检测大招
+        if (playerController.inputSystem.Player.BigSkill.triggered)
+        {
+            //进入大招状态
+            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            return;
         }
         #endregion
     }

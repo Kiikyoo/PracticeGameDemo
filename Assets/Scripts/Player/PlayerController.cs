@@ -29,7 +29,7 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
     private void Start()
     {
         //ÇÐ»»´ý»ú×´Ì¬
-        SwitchState(PlayerState.Idle);
+        SwitchState(E_PlayerState.Idle);
         LockMouse();
     }
     /// <summary>
@@ -46,37 +46,46 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
     /// ÇÐ»»×´Ì¬
     /// </summary>
     /// <param name="playerState"></param>
-    public void SwitchState(PlayerState playerState)
+    public void SwitchState(E_PlayerState playerState)
     {
         switch (playerState)
         {
-            case PlayerState.Idle:
+            case E_PlayerState.Idle:
                 stateMachine.EnterState<PlayerIdleState>();
                 break;
-            case PlayerState.Run:
+            case E_PlayerState.Run:
                 stateMachine.EnterState<PlayerRunState>();
                 break;         
-            case PlayerState.RunEnd:
+            case E_PlayerState.RunEnd:
                 stateMachine.EnterState<PlayerRunEndState>();
                 break;
-            case PlayerState.TurnBack:
+            case E_PlayerState.TurnBack:
                 stateMachine.EnterState<PlayerTurnBackState>();
                 break; 
-            case PlayerState.Evade_Back:
-            case PlayerState.Evade_Front:
+            case E_PlayerState.Evade_Back:
+            case E_PlayerState.Evade_Front:
                 if (evadeCD != 1f)
                     return;
                 stateMachine.EnterState<PlayerEvadeState>();
                 evadeCD -= 1f;
                 break;
-            case PlayerState.EvadeEnd:
+            case E_PlayerState.EvadeEnd:
                 stateMachine.EnterState<PlayerEvadeEndState>();
                 break;
-            case PlayerState.NormalAttack:
+            case E_PlayerState.NormalAttack:
                 stateMachine.EnterState<PlayerNormalAttackState>();
                 break;            
-            case PlayerState.NormalAttackEnd:
+            case E_PlayerState.NormalAttackEnd:
                 stateMachine.EnterState<PlayerNormalAttackEndState>();
+                break;
+            case E_PlayerState.BigSkillStart:
+                stateMachine.EnterState<PlayerBigSkillStartState>();
+                break;
+            case E_PlayerState.BigSkill:
+                stateMachine.EnterState<PlayerBigSkillState>();
+                break;
+            case E_PlayerState.BigSkillEnd:
+                stateMachine.EnterState<PlayerBigSkillEndState>();
                 break;
         }
         playerModel.State = playerState;
