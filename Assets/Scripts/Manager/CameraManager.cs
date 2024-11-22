@@ -11,8 +11,9 @@ public class CameraManager : SingleMonoBase<CameraManager>
     public CinemachineBrain cmBrain;
     //自由相机
     public GameObject freeLookCamera;
-
+    //自由相机的组件
     public CinemachineFreeLook freeLook;
+
     public void ResetFreeLookCamera()
     {
         freeLook.m_YAxis.Value = 0.5f;
