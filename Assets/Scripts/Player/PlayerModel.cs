@@ -21,7 +21,7 @@ public class PlayerModel : MonoBehaviour
     //移动脚枚举
     public MoveFoot moveFoot = MoveFoot.Right;
     //重力
-    public float gravity = -9.8f;
+    //public float gravity = -9.8f;
     //技能配置文件
     public SkillConfig skillConfig;
     //大招开始镜头

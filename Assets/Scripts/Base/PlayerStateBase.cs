@@ -27,6 +27,7 @@ public class PlayerStateBase : StateBase
 
     public override void FixedUpdate()
     {
+
     }
 
     public override void Init(IStateMachineOwner owner)
@@ -37,6 +38,7 @@ public class PlayerStateBase : StateBase
 
     public override void LateUpdate()
     {
+
     }
 
     public override void UnInit()
@@ -46,7 +48,7 @@ public class PlayerStateBase : StateBase
     public override void Update()
     {
         //施加重力
-        playerModel.characterController.Move(new Vector3(0, playerModel.gravity * Time.deltaTime, 0));
+        //playerModel.characterController.Move(new Vector3(0, playerModel.gravity * Time.deltaTime, 0));
         //刷新动画状态信息
         stateInfo = playerModel.animator.GetCurrentAnimatorStateInfo(0);
         //动画进入时间开始计时

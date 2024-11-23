@@ -13,7 +13,8 @@ public class PlayerBigSkillState : PlayerStateBase
         playerModel.bigSkillStartShot.SetActive(false);
         //打开大招视角镜头
         playerModel.bigSkillShot.SetActive(true);
-
+        //关闭重力，让角色跳跃起来
+        //playerModel.gravity = 0f;
 
         playerController.PlayAnimation("BigSkill", 0f);
     }
@@ -25,7 +26,9 @@ public class PlayerBigSkillState : PlayerStateBase
         #region 检测动画播放结束
         if (IsAnimationEnd())
         {
+
             playerController.SwitchState(E_PlayerState.BigSkillEnd);
+            return;
         }
         #endregion
 
