@@ -32,7 +32,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
         #endregion
 
         #region 检测移动
-        if (playerController.inputMoveVec2 != Vector2.zero && animationPlayTime >= 0.4f)
+        if (playerController.inputMoveVec2 != Vector2.zero && statePlayingTime >= 0.4f)
         {
             playerController.SwitchState(E_PlayerState.Run);
             //重新计算攻击段数

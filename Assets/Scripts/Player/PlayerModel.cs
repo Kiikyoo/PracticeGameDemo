@@ -16,6 +16,8 @@ public class PlayerModel : MonoBehaviour
     public Animator animator;
     //玩家状态
     public E_PlayerState State;
+    //当前状态
+    public E_PlayerState currentState;
     //角色控制器
     public CharacterController characterController;
     //移动脚枚举

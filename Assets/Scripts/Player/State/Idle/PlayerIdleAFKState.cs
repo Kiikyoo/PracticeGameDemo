@@ -2,28 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerStateBase
+public class PlayerIdleAFKState : PlayerStateBase
 {
+
     public override void Enter()
     {
         base.Enter();
-        playerController.PlayAnimation("Idle");
-
+        playerController.PlayAnimation("Idle_AFK");
     }
+
     public override void Update()
     {
         base.Update();
-
-        #region 检测挂机
-        if (statePlayingTime >= 7)
+        //如果动画播放结束，切换回待机状态
+        if (IsAnimationEnd())
         {
-            playerController.SwitchState(E_PlayerState.Idle_AFK);
             statePlayingTime = 0;
+            playerController.SwitchState(E_PlayerState.Idle);
             return;
         }
-
-
-        #endregion
 
         #region 检测大招
         if (playerController.inputSystem.Player.BigSkill.triggered)

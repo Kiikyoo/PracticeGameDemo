@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum E_PlayerState
 {
-    Idle, Run, RunEnd, TurnBack, Evade_Front, Evade_Back, EvadeEnd, NormalAttack, NormalAttackEnd, BigSkillStart, BigSkill, BigSkillEnd
+    Idle, Idle_AFK, Run, RunEnd, TurnBack, Evade_Front, Evade_Back, EvadeEnd, NormalAttack, NormalAttackEnd, BigSkillStart, BigSkill, BigSkillEnd
 }
 public class PlayerStateBase : StateBase
 {
@@ -15,10 +15,10 @@ public class PlayerStateBase : StateBase
     //动画信息
     protected AnimatorStateInfo stateInfo;
     //记录当前动画进入时间
-    protected float animationPlayTime = 0;
+    protected float statePlayingTime = 0;
     public override void Enter()
     {
-        animationPlayTime = 0;
+        statePlayingTime = 0;
     }
 
     public override void Exit()
@@ -52,7 +52,7 @@ public class PlayerStateBase : StateBase
         //刷新动画状态信息
         stateInfo = playerModel.animator.GetCurrentAnimatorStateInfo(0);
         //动画进入时间开始计时
-        animationPlayTime +=Time.deltaTime;
+        statePlayingTime +=Time.deltaTime;
     }
 
     /// <summary>

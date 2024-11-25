@@ -48,10 +48,14 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
     /// <param name="playerState"></param>
     public void SwitchState(E_PlayerState playerState)
     {
+        playerModel.currentState = playerState;
         switch (playerState)
         {
             case E_PlayerState.Idle:
                 stateMachine.EnterState<PlayerIdleState>();
+                break;
+            case E_PlayerState.Idle_AFK:
+                stateMachine.EnterState<PlayerIdleAFKState>();
                 break;
             case E_PlayerState.Run:
                 stateMachine.EnterState<PlayerRunState>();
