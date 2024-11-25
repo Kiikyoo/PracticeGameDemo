@@ -39,7 +39,7 @@ public class PlayerBigSkillEndState : PlayerStateBase
         #region ºÏ≤‚±º≈‹
         if (playerController.inputMoveVec2 != Vector2.zero)
         {
-            playerController.SwitchState(E_PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Walk);
             return;
         }
         #endregion

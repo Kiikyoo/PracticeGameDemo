@@ -31,10 +31,10 @@ public class PlayerIdleAFKState : PlayerStateBase
         }
         #endregion
 
-        #region ºÏ≤‚±º≈‹
+        #region ºÏ≤‚“∆∂Ø
         if (playerController.inputMoveVec2 != Vector2.zero)
         {
-            playerController.SwitchState(E_PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Walk);
             return;
         }
         #endregion

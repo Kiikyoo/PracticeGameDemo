@@ -23,6 +23,7 @@ public class PlayerNormalAttackState : PlayerStateBase
         if (IsAnimationEnd())
         {
             playerController.SwitchState(E_PlayerState.NormalAttackEnd);
+            return;
         }
         #endregion
     }

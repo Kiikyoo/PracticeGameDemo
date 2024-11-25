@@ -57,8 +57,9 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
             case E_PlayerState.Idle_AFK:
                 stateMachine.EnterState<PlayerIdleAFKState>();
                 break;
+            case E_PlayerState.Walk:
             case E_PlayerState.Run:
-                stateMachine.EnterState<PlayerRunState>();
+                stateMachine.EnterState<PlayerRunState>(true);
                 break;         
             case E_PlayerState.RunEnd:
                 stateMachine.EnterState<PlayerRunEndState>();
@@ -69,11 +70,14 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
             case E_PlayerState.Evade_Back:
             case E_PlayerState.Evade_Front:
                 if (evadeCD != 1f)
+                {
                     return;
+                }
                 stateMachine.EnterState<PlayerEvadeState>();
-                evadeCD -= 1f;
+                evadeCD = 0f;
                 break;
-            case E_PlayerState.EvadeEnd:
+            case E_PlayerState.Evade_Front_End:
+            case E_PlayerState.Evade_Back_End:
                 stateMachine.EnterState<PlayerEvadeEndState>();
                 break;
             case E_PlayerState.NormalAttack:
@@ -92,7 +96,6 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
                 stateMachine.EnterState<PlayerBigSkillEndState>();
                 break;
         }
-        playerModel.State = playerState;
     }
     /// <summary>
     /// ²¥·Å¶¯»­

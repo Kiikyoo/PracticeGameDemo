@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// Íæ¼Ò×´Ì¬Ã¶¾Ù
+/// </summary>
 public enum E_PlayerState
 {
-    Idle, Idle_AFK, Run, RunEnd, TurnBack, Evade_Front, Evade_Back, EvadeEnd, NormalAttack, NormalAttackEnd, BigSkillStart, BigSkill, BigSkillEnd
+    Idle, Idle_AFK, Walk, Run, RunEnd, TurnBack, Evade_Front, Evade_Back, Evade_Front_End, Evade_Back_End, NormalAttack, NormalAttackEnd, BigSkillStart, BigSkill, BigSkillEnd
 }
 public class PlayerStateBase : StateBase
 {

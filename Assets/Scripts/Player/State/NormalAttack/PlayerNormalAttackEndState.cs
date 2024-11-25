@@ -34,9 +34,10 @@ public class PlayerNormalAttackEndState : PlayerStateBase
         #region 检测移动
         if (playerController.inputMoveVec2 != Vector2.zero && statePlayingTime >= 0.4f)
         {
-            playerController.SwitchState(E_PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Walk);
             //重新计算攻击段数
             playerModel.skillConfig.currentNormalAttackIndex = 1;
+            return;
         }
         #endregion
 
@@ -47,6 +48,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
             playerController.SwitchState(E_PlayerState.Evade_Front);
             //重新计算攻击段数
             playerModel.skillConfig.currentNormalAttackIndex = 1;
+            return;
         }
         #endregion
 
@@ -56,6 +58,7 @@ public class PlayerNormalAttackEndState : PlayerStateBase
             //切换至普通攻击后摇状态
             playerController.SwitchState(E_PlayerState.Idle);
             playerModel.skillConfig.currentNormalAttackIndex = 1;
+            return;
         }
         #endregion
     }

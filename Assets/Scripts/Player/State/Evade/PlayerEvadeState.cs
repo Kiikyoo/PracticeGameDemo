@@ -9,30 +9,26 @@ public class PlayerEvadeState : PlayerStateBase
     {
         base.Enter();
         mainCamera = Camera.main;
-        #region 检测待机
+        #region 没有移动输入下的闪避
         //如果没有移动输入
         if (playerController.inputMoveVec2 == Vector2.zero)
         {
             #region 判断前后闪避
-            switch (playerModel.State)
+            switch (playerModel.currentState)
             {
-                case E_PlayerState.Run:
+                case E_PlayerState.Evade_Front:
                     playerController.PlayAnimation("Evade_Front");
                     break;
-                case E_PlayerState.Idle:
-                case E_PlayerState.RunEnd:
-                case E_PlayerState.NormalAttackEnd:
-                case E_PlayerState.BigSkillEnd:
+                case E_PlayerState.Evade_Back:
                     playerController.PlayAnimation("Evade_Back");
                     break;
-
             }
             #endregion
             return;
         }
         #endregion
 
-        #region 检测并处理移动方向
+        #region 有移动输入下的闪避，检测并处理移动方向
         else
         {
             //获取移动方向向量
@@ -66,7 +62,23 @@ public class PlayerEvadeState : PlayerStateBase
         #region 动画是否播放结束,是则转为闪避结束状态
         if (IsAnimationEnd())
         {
-            playerController.SwitchState(E_PlayerState.EvadeEnd);
+            switch (playerModel.currentState)
+            {
+                case E_PlayerState.Evade_Front:
+                    if(playerController.inputSystem.Player.Evade.IsPressed())
+                    {
+                        playerController.SwitchState(E_PlayerState.Run);
+                        return;
+                    }
+                    else
+                    {
+                        playerController.SwitchState(E_PlayerState.Evade_Front_End);
+                        return;
+                    }
+                case E_PlayerState.Evade_Back:
+                    playerController.SwitchState(E_PlayerState.Evade_Back_End);
+                    break;
+            }
             return;
         }
         #endregion

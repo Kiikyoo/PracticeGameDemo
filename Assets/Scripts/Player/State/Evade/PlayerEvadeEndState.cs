@@ -12,12 +12,12 @@ public class PlayerEvadeEndState : PlayerStateBase
         base.Enter();
 
         #region ≈–∂œ«∞∫Û…¡±‹
-        switch(playerModel.State)
+        switch(playerModel.currentState)
         {
-            case E_PlayerState.Evade_Front:
+            case E_PlayerState.Evade_Front_End:
                 playerController.PlayAnimation("Evade_Front_End");
                 break;            
-            case E_PlayerState.Evade_Back:
+            case E_PlayerState.Evade_Back_End:
                 playerController.PlayAnimation("Evade_Back_End");
                 break;
         }

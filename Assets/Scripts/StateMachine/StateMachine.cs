@@ -29,10 +29,11 @@ public class StateMachine
     /// 进入状态
     /// </summary>
     /// <typeparam name="T">状态类型</typeparam>
-    public void EnterState<T>()where T : StateBase, new()
+    /// <typeparam name="reLoadState">是否刷新状态</typeparam>
+    public void EnterState<T>(bool reLoadState = false)where T : StateBase, new()
     {
         //如果状态一致则不切换状态
-        if (HasState && currentState.GetType() == typeof(T))
+        if (HasState && currentState.GetType() == typeof(T) && !reLoadState)
         {
             return;
         }   

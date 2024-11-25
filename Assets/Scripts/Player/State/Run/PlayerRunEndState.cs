@@ -46,7 +46,7 @@ public class PlayerRunEndState : PlayerStateBase
         #region ºÏ≤‚“∆∂Ø ‰»Î
         if (playerController.inputMoveVec2 != Vector2.zero)
         {
-            playerController.SwitchState(E_PlayerState.Run);
+            playerController.SwitchState(E_PlayerState.Walk);
             return;
         }
         #endregion
@@ -67,6 +67,8 @@ public class PlayerRunEndState : PlayerStateBase
             return;
         }
         #endregion
+
+
 
         #region ºÏ≤‚π•ª˜
         if (playerController.inputSystem.Player.Fire.triggered)

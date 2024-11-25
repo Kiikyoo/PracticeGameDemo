@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Íæ¼Ò×´Ì¬Ã¶¾Ù
-/// </summary>
 
-//¼±Í£¶¯»­ÒÆ¶¯½Ç
+//¼±Í£¶¯»­ÒÆ¶¯½Å
 public enum MoveFoot
 {
     Right,Left
@@ -14,8 +11,6 @@ public class PlayerModel : MonoBehaviour
 {
     //¶¯»­¿ØÖÆÆ÷
     public Animator animator;
-    //Íæ¼Ò×´Ì¬
-    public E_PlayerState State;
     //µ±Ç°×´Ì¬
     public E_PlayerState currentState;
     //½ÇÉ«¿ØÖÆÆ÷
