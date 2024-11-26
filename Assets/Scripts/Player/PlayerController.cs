@@ -81,7 +81,7 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
                 stateMachine.EnterState<PlayerEvadeEndState>();
                 break;
             case E_PlayerState.NormalAttack:
-                stateMachine.EnterState<PlayerNormalAttackState>();
+                stateMachine.EnterState<PlayerNormalAttackState>(true);
                 break;            
             case E_PlayerState.NormalAttackEnd:
                 stateMachine.EnterState<PlayerNormalAttackEndState>();

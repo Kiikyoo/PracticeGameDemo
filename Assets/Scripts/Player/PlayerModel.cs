@@ -36,4 +36,9 @@ public class PlayerModel : MonoBehaviour
     {
         moveFoot = MoveFoot.Right;
     }
+    private void OnDisable()
+    {
+        //÷ÿ÷√∆’Õ®π•ª˜∂Œ ˝
+        skillConfig.currentNormalAttackIndex = 1;
+    }
 }
