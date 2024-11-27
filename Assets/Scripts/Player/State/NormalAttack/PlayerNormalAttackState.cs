@@ -14,6 +14,39 @@ public class PlayerNormalAttackState : PlayerStateBase
     {
         base.Enter();
         enterNextAttack = false;
+
+        #region 锁定最近敌人
+        GameObject targetEnemy = null;
+        //初始化最近敌人距离，默认最大值
+        float minDistance = Mathf.Infinity;
+        //遍历所有拥有标签的敌人
+        foreach(string tag in playerController.enemyTagList)
+        {
+            //获取场景中拥有标签的敌人数组
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
+            foreach(GameObject enemy in enemies)
+            {
+                //计算敌人距离
+                float distance = Vector3.Distance(playerModel.transform.position, enemy.transform.position);
+                //如果找到更近距离敌人，切换目标敌人
+                if(distance < minDistance)
+                {
+                    targetEnemy = enemy;
+                    minDistance = distance;
+                }
+            }
+        }
+        //若范围内存在敌人
+        if(targetEnemy != null && minDistance < 5f)
+        {
+            //计算玩家与最近敌人的方向
+            Vector3 direction = (targetEnemy.transform.position - playerModel.transform.position).normalized;
+            //玩家模型朝向该方向
+            playerModel.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
+        }
+        #endregion
+
+
         //播放普通攻击动画
         playerController.PlayAnimation($"Attack_Normal_{playerModel.skillConfig.currentNormalAttackIndex}");
     }
