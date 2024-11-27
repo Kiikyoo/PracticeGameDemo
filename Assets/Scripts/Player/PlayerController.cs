@@ -17,14 +17,19 @@ public class PlayerController : SingleMonoBase<PlayerController>,IStateMachineOw
     public float rotationSpeed = 8f;
     //状态机
     private StateMachine stateMachine;
-
+    //闪避CD
     private float evadeCD;
+    //敌人标签列表
+    public List<string> enemyTagList;
+
 
     protected override void Awake()
     {
         base.Awake();
         stateMachine = new StateMachine(this);
         inputSystem = new InputSystem();
+        //初始化角色模型
+        playerModel.Init(enemyTagList);
     }
     private void Start()
     {

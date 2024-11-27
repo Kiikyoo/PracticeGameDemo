@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 6cde9db7791c34946a25712f6c916391
+guid: 676b5e5582671c44294979a73925a81a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_Monster_Claymore
+    second: {fileID: 2100000, guid: 6f5dce1a7d2db154c89d4271cd144ab7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,54 +36,11 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Attack_Normal_4
-      takeName: Take 001
-      internalID: 1827226128182048838
-      firstFrame: 0
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.9189189
-        functionName: StopHit
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: abc1373c739b2f9448de6a8baeb76ad7, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.14864865
-        functionName: StartHit
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: abc1373c739b2f9448de6a8baeb76ad7, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -133,16 +95,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 100
+    globalScale: 1
     rootMotionBoneName: Bip001
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a8a71cc63d752154a82677507bc2c6a2, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
