@@ -21,7 +21,7 @@ public class PlayerModel : MonoBehaviour,IHurt
     //移动脚枚举
     public MoveFoot moveFoot = MoveFoot.Right;
     //重力
-    //public float gravity = -9.8f;
+    public float gravity = -9.8f;
     //技能配置文件
     public SkillConfig skillConfig;
     //大招开始镜头
@@ -77,9 +77,21 @@ public class PlayerModel : MonoBehaviour,IHurt
     {
         moveFoot = MoveFoot.Right;
     }
+
     private void OnDisable()
     {
         //重置普通攻击段数
         skillConfig.currentNormalAttackIndex = 1;
     }
+    //禁用重力
+    public void DisableGravity()
+    {
+        gravity = 0f;
+    }
+    //启用重力
+    public void EnableGravity()
+    {
+        gravity = -9.8f;
+    }
+
 }
