@@ -50,5 +50,13 @@ public class PlayerEvadeAttackEnd : PlayerStateBase
             return;
         }
         #endregion
+
+        #region ºÏ≤‚“∆∂Ø
+        if (playerController.inputMoveVec2 != Vector2.zero)
+        {
+            playerController.SwitchState(E_PlayerState.Run);
+            return;
+        }
+        #endregion
     }
 }

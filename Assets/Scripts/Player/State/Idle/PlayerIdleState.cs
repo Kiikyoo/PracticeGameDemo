@@ -15,7 +15,7 @@ public class PlayerIdleState : PlayerStateBase
         base.Update();
 
         #region ¼ì²â¹Ò»ú
-        if (statePlayingTime >= 7)
+        if (statePlayingTime >= 5)
         {
             playerController.SwitchState(E_PlayerState.Idle_AFK);
             statePlayingTime = 0;

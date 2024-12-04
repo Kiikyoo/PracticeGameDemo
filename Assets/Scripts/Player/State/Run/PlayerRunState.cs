@@ -74,15 +74,6 @@ public class PlayerRunState : PlayerStateBase
         }
         #endregion
 
-
-        #region 检测待机
-        if (playerController.inputMoveVec2 == Vector2.zero)
-        {
-            playerController.SwitchState(E_PlayerState.RunEnd);
-            return;
-        }
-        #endregion
-
         #region 检测并处理移动方向
         else
         {
@@ -94,7 +85,7 @@ public class PlayerRunState : PlayerStateBase
             Quaternion targetQua = Quaternion.LookRotation(targetDic);
             //计算旋转角度，若在区间内切换至转身状态，否则慢转人物模型
             float angles = Mathf.Abs(targetQua.eulerAngles.y - playerModel.transform.rotation.eulerAngles.y);
-            if (angles >= 145f && angles <= 215f && playerModel.currentState == E_PlayerState.Run)
+            if (angles >= 145f && angles <= 215f)
             {
                 //切换至转身状态
                 playerController.SwitchState(E_PlayerState.TurnBack);
@@ -106,6 +97,16 @@ public class PlayerRunState : PlayerStateBase
             }
         }
         #endregion
+
+        #region 检测待机
+        if (playerController.inputMoveVec2 == Vector2.zero)
+        {
+            playerController.SwitchState(E_PlayerState.RunEnd);
+            return;
+        }
+        #endregion
+
+
 
         #region 检测慢跑升级
         if (playerModel.currentState == E_PlayerState.Walk && statePlayingTime > 2f)

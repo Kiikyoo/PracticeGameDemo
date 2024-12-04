@@ -76,24 +76,8 @@ public class PlayerEvadeAttack : PlayerStateBase
         }
         #endregion
 
-        #region ¼ì²â¹¥»÷
-        if (playerController.inputSystem.Player.Fire.triggered)
-        {
-            //ÇÐ»»ÖÁÆÕÍ¨¹¥»÷×´Ì¬
-            playerController.SwitchState(E_PlayerState.NormalAttack);
-            return;
-        }
-        #endregion
 
-        #region ¼ì²âÒÆ¶¯
-        if (playerController.inputMoveVec2 != Vector2.zero && statePlayingTime >= 0.4f)
-        {
-            playerController.SwitchState(E_PlayerState.Walk);
-            //ÖØÐÂ¼ÆËã¹¥»÷¶ÎÊý
-            playerModel.skillConfig.currentNormalAttackIndex = 1;
-            return;
-        }
-        #endregion
+
 
 
     }

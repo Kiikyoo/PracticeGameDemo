@@ -10,12 +10,9 @@ public class PlayerTurnBackState : PlayerStateBase
     public override void Enter()
     {
         base.Enter();
-        playerController.PlayAnimation("TurnBack", 0.1f);
+        playerController.PlayAnimation("TurnBack",0.1f);
     }
 
-
-
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
