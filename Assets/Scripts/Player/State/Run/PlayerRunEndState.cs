@@ -37,7 +37,7 @@ public class PlayerRunEndState : PlayerStateBase
         if (playerController.inputSystem.Player.BigSkill.triggered)
         {
             //½øÈë´óÕÐ×´Ì¬
-            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            playerController.SwitchState(E_PlayerState.BigSkill_Start);
             return;
         }
         #endregion

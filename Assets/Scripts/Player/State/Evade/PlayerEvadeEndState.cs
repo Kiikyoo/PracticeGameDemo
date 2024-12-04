@@ -47,7 +47,7 @@ public class PlayerEvadeEndState : PlayerStateBase
         #region ¼ì²â¹¥»÷
         if (playerController.inputSystem.Player.Fire.triggered)
         {
-            //ÇÐ»»ÖÁÆÕÍ¨¹¥»÷×´Ì¬
+            //ÇÐ»»ÖÁÉÁ±Ü¹¥»÷×´Ì¬
             playerController.SwitchState(E_PlayerState.NormalAttack);
             return;
         }
@@ -57,7 +57,7 @@ public class PlayerEvadeEndState : PlayerStateBase
         if (playerController.inputSystem.Player.BigSkill.triggered)
         {
             //½øÈë´óÕÐ×´Ì¬
-            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            playerController.SwitchState(E_PlayerState.BigSkill_Start);
             return;
         }
         #endregion

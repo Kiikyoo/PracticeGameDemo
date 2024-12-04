@@ -24,7 +24,7 @@ public class PlayerTurnBackState : PlayerStateBase
         if (playerController.inputSystem.Player.BigSkill.triggered)
         {
             //切换到进入大招状态
-            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            playerController.SwitchState(E_PlayerState.BigSkill_Start);
             return;
         }
         #endregion

@@ -45,8 +45,7 @@ public class PlayerNormalAttackState : PlayerStateBase
             playerModel.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
         }
         #endregion
-
-
+        
         //播放普通攻击动画
         playerController.PlayAnimation($"Attack_Normal_{playerModel.skillConfig.currentNormalAttackIndex}");
     }
@@ -80,7 +79,7 @@ public class PlayerNormalAttackState : PlayerStateBase
             }
             else
             {
-                playerController.SwitchState(E_PlayerState.NormalAttackEnd);
+                playerController.SwitchState(E_PlayerState.NormalAttack_End);
                 return;
             }
         }
@@ -90,9 +89,10 @@ public class PlayerNormalAttackState : PlayerStateBase
         if (playerController.inputSystem.Player.BigSkill.triggered && stateInfo.normalizedTime >= 0.5f)
         {
             //进入大招状态
-            playerController.SwitchState(E_PlayerState.BigSkillStart);
+            playerController.SwitchState(E_PlayerState.BigSkill_Start);
             return;
         }
         #endregion
+
     }
 }

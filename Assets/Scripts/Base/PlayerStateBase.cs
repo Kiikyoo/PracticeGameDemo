@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public enum E_PlayerState
 {
-    Idle, Idle_AFK, Walk, Run, RunEnd, TurnBack, Evade_Front, Evade_Back, Evade_Front_End, Evade_Back_End, NormalAttack, NormalAttackEnd, BigSkillStart, BigSkill, BigSkillEnd
+    Idle, Idle_AFK, Walk, Run, RunEnd, TurnBack, Evade_Front, Evade_Back, Evade_Front_End, Evade_Back_End, NormalAttack, NormalAttack_End, BigSkill_Start, BigSkill, BigSkill_End, EvadeAttack,EvadeAttack_End
 }
 public class PlayerStateBase : StateBase
 {

@@ -59,7 +59,7 @@ public class PlayerBigSkillState : PlayerStateBase
         if (IsAnimationEnd())
         {
 
-            playerController.SwitchState(E_PlayerState.BigSkillEnd);
+            playerController.SwitchState(E_PlayerState.BigSkill_End);
             return;
         }
         #endregion

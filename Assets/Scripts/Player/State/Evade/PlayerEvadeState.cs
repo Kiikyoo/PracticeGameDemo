@@ -59,6 +59,16 @@ public class PlayerEvadeState : PlayerStateBase
     public override void Update()
     {
         base.Update();
+
+        #region 检测闪避攻击
+        if (playerController.inputSystem.Player.Fire.triggered && stateInfo.normalizedTime >= 0.3f)
+        {
+            //切换至闪避攻击状态
+            playerController.SwitchState(E_PlayerState.EvadeAttack);
+            return;
+        }
+        #endregion
+
         #region 动画是否播放结束,是则转为闪避结束状态
         if (IsAnimationEnd())
         {
